@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -91,10 +85,3 @@ if st.button('Get Similar Players'):
 
     # Display the similar players
     st.write(similar_players)
-
-
-# In[ ]:
-
-
-
-
