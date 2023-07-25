@@ -56,13 +56,10 @@ def get_similar_players(df, similarity_df, player_name, top_n=10):
     most_similar_players = most_similar_players[most_similar_players.index != player_name]
 
     # Create a DataFrame with names and positions of the similar players
-    similar_players_df = df[df['Name'].isin(most_similar_players.index)][['Name', 'Position']]
+    similar_players_df = pd.DataFrame(most_similar_players).join(df.set_index('Name')[['Position']])
 
-    # Reset index
-    similar_players_df.reset_index(drop=True, inplace=True)
-
-    # Add the similarity scores to the DataFrame
-    similar_players_df['Similarity'] = most_similar_players.values
+    # Rename the columns
+    similar_players_df.columns = ['Similarity', 'Position']
 
     return similar_players_df
 
